@@ -1,0 +1,69 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    static class Mahasiswa {
+        int nomer=0;
+        String nama;
+        int nilai;
+    }
+    static int hitung, bantu;
+    static Scanner scan = new Scanner(System.in);
+    Mahasiswa [] mhs = new Mahasiswa[1000];
+
+    void inputkan (){
+        mhs[hitung]=new Mahasiswa();
+        System.out.print("Masukkan nomer : ");
+        mhs[hitung].nomer = scan.nextInt();
+        if(mhs[hitung].nomer==999){
+            bantu=1;
+        }
+        System.out.print("Masukkan nama : ");
+        mhs[hitung].nama = scan.next();
+        System.out.print("Masukkan Nilai : ");
+        mhs[hitung].nilai= scan.nextInt();
+        hitung++;
+    }
+    void sorting () {
+        for (int i=0; i<hitung; i++){
+            int k= mhs[i].nilai;
+            int pos = i;
+            while ((pos!=0)&&(mhs[pos-1].nilai<k)){
+
+                mhs[pos].nilai=mhs[pos-1].nilai;
+                pos--;
+                mhs[pos].nilai=k;
+            }
+        }
+        System.out.println();
+        for (int i =0; i<3; i++){
+            System.out.println("Juara "+(i+1)+ " = Nama : "+ mhs[i].nama +", Nilai : "+  mhs[i].nilai+" \t ");
+        }
+
+    }
+
+
+    public static void main (String []args){
+        Main kw = new Main();
+        int pilih;
+        do {
+            System.out.println("1. Inputkan data");
+            System.out.print("Jawab : ");
+            pilih = scan.nextInt();
+
+            switch (pilih) {
+                case 1:
+                    kw.inputkan();
+                    break;
+                default:
+                    System.out.println("Pilihan anda tidak tersedia.");
+            }
+        }while (bantu!=1);
+
+        kw.sorting();
+    }
+
+}
+
