@@ -1,0 +1,42 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int [] angka = new int [9];
+
+        System.out.println("====Program mengatasi duplikat angka====");
+        System.out.println();
+
+        for (int i = 0; i <9 ; i++) {
+            System.out.print("Masukkan angka ke-" + (i + 1) + " : ");
+            int a =scan.nextInt();
+
+            if(i > 0){
+                boolean cek = false;
+                for (int j = 0; j < i; j++) {
+                    if(angka[j] == a)
+                        cek = true;
+                }
+                if(cek == false)
+                    angka[i] = a;
+                else
+                    i--;
+            }
+            else
+            {
+                angka[i] = a;
+            }
+        }
+
+        System.out.println();
+        System.out.println("Data sesudahnya");
+        for (int i = 0; i < 9 ; i++) {
+            System.out.print(angka[i] + " \t ");
+        }
+
+    }
+}
