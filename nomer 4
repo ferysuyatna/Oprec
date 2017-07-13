@@ -1,0 +1,59 @@
+package com.company;
+
+import javax.xml.bind.SchemaOutputResolver;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("==========Program pengurutan angka==========");
+
+        System.out.print("Masukkan banyak bilangan : ");
+        int jum = scan.nextInt();
+        int[] bilangan = new int[jum];
+        for (int i = 0; i < jum; i++) {
+            System.out.print("Masukkan bilangan ke-" + (i + 1) + " : ");
+            bilangan[i] = scan.nextInt();
+        }
+
+        System.out.println();
+        for (int i = 0; i < jum; i++) {
+            System.out.println("Data awal : "+  bilangan[i] + "\t");
+        }
+
+        for (int i=0; i<jum; i++){
+            int k= bilangan[i];
+            int pos = i;
+            while ((pos!=0)&&(bilangan[pos-1]>k)){
+
+                bilangan[pos]=bilangan[pos-1];
+                pos--;
+                bilangan[pos]=k;
+            }
+        }
+        System.out.println();
+        System.out.println("==========ASCENDING==========");
+        for(int i=0; i<jum; i++){
+            System.out.print( bilangan[i] + " \t ");
+        }
+
+        for (int i=0; i<jum; i++){
+            int min =i;
+            for (int j=min+1; j<jum; j++){
+                if(bilangan[min]<bilangan[j]){
+                    min=j;
+                }
+            }
+            int temp = bilangan[min];
+            bilangan[min]=bilangan[i];
+            bilangan[i]=temp;
+        }
+        System.out.println();
+        System.out.println("==========DESCENDING==========");
+        for (int i =0; i<jum; i++){
+            System.out.print( bilangan[i]+" \t ");
+        }
+    }
+}
